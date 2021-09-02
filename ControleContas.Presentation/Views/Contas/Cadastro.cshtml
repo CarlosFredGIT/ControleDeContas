@@ -1,0 +1,36 @@
+﻿@model ControleContas.Presentation.Models.ContasCadastroModel
+@{
+    ViewData["Title"] = "Cadastro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Cadastro de Contas</h5>
+
+<p>
+    Preencha o formulário para incluir uma conta.
+</p>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-6">
+            <label>Nome da conta:</label>
+            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Nome)</span>
+        </div>
+        <div class="col-md-3">
+            <label>Valor da conta:</label>
+            @Html.TextBoxFor(model => model.Preco, new { @class = "form-control" })
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Preco)</span>
+        </div>
+        <div class="col-md-3">
+            <label>Data de vencimento da conta:</label>
+            @Html.TextBoxFor(model => model.DataVencimento, new { @class = "form-control", @type = "date" })
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.DataVencimento)</span>
+        </div>      
+    </div>
+
+    <br />
+
+    <input type="submit" value="Realizar Cadastro" class="btn btn-success" />
+}

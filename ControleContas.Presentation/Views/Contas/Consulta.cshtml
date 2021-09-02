@@ -1,0 +1,103 @@
+﻿@model ControleContas.Presentation.Models.ContasConsultaModel
+
+@{
+    ViewData["Title"] = "Consulta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Consulta de contas</h5>
+<p>
+    Listagem de contas cadastradas.
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Selecione o período de datas desejado para a consulta:
+    </p>
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.DataMin, new { @class = "form-control", @type = "date" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.DataMin)
+            </span>
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.DataMax, new { @class = "form-control", @type = "date" })
+            <span class="text-danger">
+                @Html.ValidationMessageFor(model => model.DataMax)
+            </span>
+        </div>
+        <div class="col-md-6">
+            <input type="submit" value="Pesquisar Contas" class="btn btn-success" />
+        </div>
+    </div>
+}
+
+<br />
+
+@if (Model != null && Model.Contas != null)
+{
+    <table id="consulta-contas" class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th>Nome da conta</th>
+                <th>Preco</th>
+                <th>Data do vencimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Contas)
+            {
+                <tr>
+                    <td>@item.Nome</td>
+                    <td>@item.Preco</td>
+                    <td>@item.DataVencimento.ToString("dddd dd/MM/yyyy")</td>
+                   
+                    <td>
+                        <a href="/Contas/Edicao?id=@item.IdContas"
+                           class="btn btn-primary btn-sm">
+                            Alterar
+                        </a>
+                        <a href="/Contas/Exclusao?id=@item.IdContas"
+                           onclick="return confirm('Deseja excluir a tarefa @item.Nome?');"
+                           class="btn btn-danger btn-sm">
+                            Excluir
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6">Quantidade de tarefas: @Model.Contas.Count</td>
+            </tr>
+        </tfoot>
+    </table>
+    <br />
+    <br />
+}
+
+@section styles {
+
+    <!-- referencias para arquivos CSS -->
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
+@section scripts {
+
+    <!-- referencias para os arquivos do jquery -->
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#consulta-contas').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json'
+                }
+            });
+        });
+    </script>
+}
