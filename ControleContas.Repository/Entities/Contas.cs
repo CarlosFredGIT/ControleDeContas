@@ -12,5 +12,6 @@ namespace ControleContas.Repository.Entities
         public string Nome { get; set; }
         public decimal Preco { get; set; }
         public DateTime DataVencimento { get; set; }
+        public string Situacao { get; set; }
     }
 }

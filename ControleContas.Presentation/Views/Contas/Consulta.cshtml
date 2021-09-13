@@ -45,6 +45,8 @@
                 <th>Nome da conta</th>
                 <th>Preco</th>
                 <th>Data do vencimento</th>
+                <th>Situação</th>
+                <th>Opções</th>
             </tr>
         </thead>
         <tbody>
@@ -54,7 +56,17 @@
                     <td>@item.Nome</td>
                     <td>@item.Preco</td>
                     <td>@item.DataVencimento.ToString("dddd dd/MM/yyyy")</td>
-                   
+                    <td>
+                        @if (item.Situacao.Equals("PAGO"))
+                        {
+                            <span class="badge bg-success">PAGO</span>
+                        }
+                        else if (item.Situacao.Equals("DEBITO"))
+                        {
+                            <span class="badge bg-danger">EM DEBITO</span>
+                        }
+                    </td>
+
                     <td>
                         <a href="/Contas/Edicao?id=@item.IdContas"
                            class="btn btn-primary btn-sm">

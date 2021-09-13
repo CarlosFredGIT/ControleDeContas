@@ -11,6 +11,6 @@ namespace ControleContas.Repository.Interfaces
     {
         List<Contas> ConsultarPorDatas(DateTime dataMin, DateTime dataMax);
 
-        List<Contas> VerificaDataVencimento(DateTime dataVencimento);
+       // List<Contas> VerificaDataVencimento(DateTime dataVencimento);
     }
 }

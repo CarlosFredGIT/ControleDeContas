@@ -18,5 +18,8 @@ namespace ControleContas.Presentation.Models
 
         [Required(ErrorMessage = "Por favor, informe a data de vencimento da conta.")]
         public string DataVencimento { get; set; }
+
+        [Required(ErrorMessage = "Por favor, informe a situação da conta.")]
+        public string Situacao { get; set; }
     }
 }

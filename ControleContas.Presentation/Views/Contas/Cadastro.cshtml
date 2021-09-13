@@ -13,7 +13,7 @@
 @using (Html.BeginForm())
 {
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label>Nome da conta:</label>
             @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
             <span class="text-danger">@Html.ValidationMessageFor(model => model.Nome)</span>
@@ -27,7 +27,20 @@
             <label>Data de vencimento da conta:</label>
             @Html.TextBoxFor(model => model.DataVencimento, new { @class = "form-control", @type = "date" })
             <span class="text-danger">@Html.ValidationMessageFor(model => model.DataVencimento)</span>
-        </div>      
+        </div>
+        <div class="col-md-2 ">
+            <label>Situação:</label>
+            <br />
+
+            @Html.RadioButtonFor(model => model.Situacao, "PAGO")
+            <label>Conta paga</label>
+
+            <br />
+            @Html.RadioButtonFor(model => model.Situacao, "DEBITO")
+            <label>Conta em debito</label>
+
+        </div>
+
     </div>
 
     <br />

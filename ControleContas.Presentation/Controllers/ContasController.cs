@@ -32,6 +32,7 @@ namespace ControleContas.Presentation.Controllers
                     contas.Nome = model.Nome;
                     contas.Preco = decimal.Parse(model.Preco);
                     contas.DataVencimento = DateTime.Parse(model.DataVencimento);
+                    contas.Situacao = model.Situacao;
 
                     contasRepository.Inserir(contas);
 
@@ -62,6 +63,10 @@ namespace ControleContas.Presentation.Controllers
                 {
                     model.Contas = ContasRepository.ConsultarPorDatas
                         (DateTime.Parse(model.DataMin), DateTime.Parse(model.DataMax));
+
+                    //var contas = new Contas();
+
+                    //if (contas.DataVencimento )
                 }
                 catch (Exception e)
                 {
@@ -84,7 +89,7 @@ namespace ControleContas.Presentation.Controllers
                 model.Nome = contas.Nome;
                 model.Preco = contas.Preco.ToString();
                 model.DataVencimento = contas.DataVencimento.ToString("yyyy-MM-dd");
-
+                model.Situacao = contas.Situacao;
             }
             catch (Exception e)
             {
@@ -107,6 +112,7 @@ namespace ControleContas.Presentation.Controllers
                     contas.Nome = model.Nome;                   
                     contas.Preco = Decimal.Parse(model.Preco);
                     contas.DataVencimento = DateTime.Parse(model.DataVencimento);
+                    contas.Situacao = model.Situacao;
 
                     ContasRepository.Alterar(contas);
 

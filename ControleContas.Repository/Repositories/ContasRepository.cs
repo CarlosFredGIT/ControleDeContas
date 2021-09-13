@@ -22,8 +22,8 @@ namespace ControleContas.Repository.Repositories
         public void Inserir(Contas obj)
         {
             var query = @"
-                            INSERT INTO CONTAS(IDCONTAS, NOME, PRECO, DATAVENCIMENTO)
-                            VALUES(@IdContas, @Nome, @Preco , @DataVencimento)
+                            INSERT INTO CONTAS(IDCONTAS, NOME, PRECO, DATAVENCIMENTO, SITUACAO)
+                            VALUES(@IdContas, @Nome, @Preco , @DataVencimento, @Situacao)
                         ";
 
             using (var connection = new SqlConnection(_connectionstring))
@@ -38,7 +38,8 @@ namespace ControleContas.Repository.Repositories
                           SET
                             NOME = @Nome, 
                             PRECO = @Preco, 
-                            DATAVENCIMENTO = @DataVencimento   
+                            DATAVENCIMENTO = @DataVencimento  
+                            SITUACAO = @Situacao
                           WHERE IDCONTAS = @IdContas
                         ";
 
@@ -100,5 +101,20 @@ namespace ControleContas.Repository.Repositories
                 return connection.Query<Contas>(query, new { dataMin, dataMax }).ToList();
             }
         }
+
+        /*public List<Contas> VerificaDataVencimento(DateTime dataVencimento)
+        {
+            var query = @"
+                            SELECT * FROM CONTAS
+                            WHERE DATAVENCIMENTO = @dataVencimento
+                            AND DATAVENCIMENTO <= TODAY - 5
+                            ORDER BY NOME DESC
+                        ";
+
+            using (var connection = new SqlConnection(_connectionstring))
+            {
+                return connection.Query<Contas>(query, new { dataVencimento }).ToList();
+            }
+        }*/
     }
 }
