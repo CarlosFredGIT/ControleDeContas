@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ControleContas.Messages\ControleContas.Messages.csproj" />
     <ProjectReference Include="..\ControleContas.Repository\ControleContas.Repository.csproj" />
   </ItemGroup>
 

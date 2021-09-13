@@ -15,7 +15,7 @@
     @RenderSection("styles", required: false)
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Projeto Controle de Contas</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,25 @@
                             <li><a class="dropdown-item" href="/Contas/Consulta">Consultar Contas</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Minha Conta
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Usuarios/DadosDaConta">Dados da conta</a></li>
+                            <li><a class="dropdown-item" href="/Usuarios/AlterarSenha">Alterar minha senha</a></li>
+                        </ul>
+                    </li>
                 </ul>
+                <form class="d-flex">
+                    <span class="text-white mt-3" style="margin-right: 20px;">
+                        @User.Identity.Name
+                    </span>
+                    <a href="/Account/Logout" class="btn btn-outline-secondary mt-2"
+                       onclick="return confirm('Deseja realmente sair do sistema?')">
+                        Sair do Sistema
+                    </a>
+                </form>
             </div>
         </div>
     </nav>

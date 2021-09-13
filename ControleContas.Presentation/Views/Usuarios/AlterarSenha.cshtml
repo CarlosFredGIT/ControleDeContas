@@ -1,0 +1,52 @@
+﻿@model ControleContas.Presentation.Models.AlterarSenhaModel
+
+@{
+    ViewData["Title"] = "AlterarSenha";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Alterar minha senha</h5>
+<p>
+    Preencha o formulário para modificar sua senha de acesso.
+</p>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            <label>Informe sua senha atual:</label>
+            @Html.PasswordFor(model => model.SenhaAtual, new { @class = "form-control" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(model => model.SenhaAtual)
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>Informe a nova senha:</label>
+            @Html.PasswordFor(model => model.NovaSenha, new { @class = "form-control" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(model => model.NovaSenha)
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">
+            <label>Confirme a nova senha:</label>
+            @Html.PasswordFor(model => model.NovaSenhaConfirmacao, new { @class = "form-control" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(model => model.NovaSenhaConfirmacao)
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <input type="submit" value="Alterar Senha" class="btn btn-success" />
+}

@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "DadosDaConta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Dados da Conta do Usuário</h5>
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>ID do Usuário:</td>
+                    <td><strong>@TempData["IdUsuario"]</strong></td>
+                </tr>
+                <tr>
+                    <td>Nome do Usuário:</td>
+                    <td><strong>@TempData["NomeUsuario"]</strong></td>
+                </tr>
+                <tr>
+                    <td>Email de Acesso:</td>
+                    <td><strong>@TempData["EmailUsuario"]</strong></td>
+                </tr>
+                <tr>
+                    <td>Data de Cadastro:</td>
+                    <td><strong>@TempData["DataCadastro"]</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace ControleContas.Repository.Interfaces
 {
-    public interface IContasRepository : IBaseRepository<Contas>
+    public interface IUsuarioRepository : IBaseRepository<Usuario>
     {
-        List<Contas> ConsultarPorDatas(DateTime dataMin, DateTime dataMax);
-
-        List<Contas> VerificaDataVencimento(DateTime dataVencimento);
+        Usuario Obter(string email);
+        Usuario Obter(string email, string senha);
     }
 }

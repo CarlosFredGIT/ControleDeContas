@@ -1,6 +1,7 @@
 ﻿using ControleContas.Presentation.Models;
 using ControleContas.Repository.Entities;
 using ControleContas.Repository.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ControleContas.Presentation.Controllers
 {
+    [Authorize]
     public class ContasController : Controller
     {
         public IActionResult Cadastro()
